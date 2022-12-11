@@ -1,5 +1,5 @@
-import { Link, Box } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
+import { Box } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 type TNavBar = {
   links: {
     text: string;
@@ -21,32 +21,29 @@ function NavBar({ links }: TNavBar) {
         alignItems: 'center',
       }}
     >
-      <Link
-        component={RouterLink}
+      <NavLink
         to="/"
-        sx={{ cursor: 'pointer', marginBottom: '80px', marginTop: '40px' }}
+        style={{ cursor: 'pointer', marginBottom: '80px', marginTop: '40px' }}
       >
-        <img src="/surelogo.svg" alt="logo"></img>
-      </Link>
+        <img src="/surelogo.svg" alt="logo" />
+      </NavLink>
 
-      {links.map(({ text, href, 'data-testid': dataTestId }) => (
-        <Link
-          component={RouterLink}
-          key={href}
-          to={href}
-          color="#fff"
-          underline="hover"
-          sx={{
-            cursor: 'pointer',
-            '&:not(:last-of-type)': {
-              marginBottom: '16px',
-            },
-          }}
-          data-testid={dataTestId}
-        >
-          {text}
-        </Link>
-      ))}
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'center' }}>
+        {links.map(({ text, href, 'data-testid': dataTestId }) => (
+          <NavLink
+            key={href}
+            to={href}
+            style={({ isActive }) => ({
+              color: '#fff',
+              textDecoration: 'none',
+              fontWeight: isActive ? "bold" : "normal"
+            })}
+            data-testid={dataTestId}
+          >
+            {text}
+          </NavLink>
+        ))}
+      </Box>
     </Box>
   );
 }
