@@ -54,7 +54,7 @@ function PolicyholdersView() {
           Check with design on the hover styling of the nav links. I removed the underline on hover when changing the implementation to support showing the active state. It would be easy to add back in using a stylesheet but there are no stylesheets in this project (I assume this would not be the case in a production environment, so it would have been easy to add the underline on hover back in).
         </ListItem>
         <ListItem>
-          Confirm with backend what the ideal staleTime would be for the react query cache. Per the instructions, I set this to Infinity, but in a production environment, this would likely not be correct.
+          Confirm with backend what the ideal staleTime would be for the react query cache. Per the instructions, I set the global default to Infinity, but in a production environment, this may or may not be correct depending on how frequently the data can change.
         </ListItem>
         <ListItem>
           Confirm with design what we want the loading and error states to look like on the policyholders view. In a production setting, we would likely have standard loading and error message components (e.g. a spinner and a toast alert) that could be dropped in. The instructions did not specify how these states should be handled, so I just used text for speed, but this solution is not production-ready in my opinion.
