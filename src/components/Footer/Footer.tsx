@@ -21,6 +21,7 @@ function Footer() {
       sx={{
         background: 'rgba(170,186,205,.2)',
         padding: '16px',
+        minHeight: '238px'
       }}
     >
       <Grid container justifyContent="space-around">
